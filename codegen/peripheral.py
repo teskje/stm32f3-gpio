@@ -1,20 +1,33 @@
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import Dict
+from typing import Dict, Tuple
 
 
-class Access(Enum):
+class Usage(Enum):
     read_write = "read-write"
-    read_only = "read-only"
-    write_only = "write-only"
+    read = "read"
+    write = "write"
+
+
+@dataclass
+class Values:
+    values: Dict[int, Tuple[str, str]]
+    usage: Usage = Usage.read_write
 
 
 @dataclass
 class Field:
     name: str
     description: str
+    values: Values
     offset: int
     width: int = 1
+
+
+class Access(Enum):
+    read_write = "read-write"
+    read_only = "read-only"
+    write_only = "write-only"
 
 
 @dataclass

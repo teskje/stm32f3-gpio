@@ -57,9 +57,15 @@ def gen_register(register, root):
 
 
 def gen_fields(fields, root):
+    fields_with_values = []
+
     for field in fields.values():
         field_elem = SubElement(root, "field")
         gen_field(field, field_elem)
+
+        values_elem = SubElement(field_elem, "enumeratedValues")
+        gen_field_values(field, values_elem, fields_with_values)
+
 
 
 def gen_field(field, root):
@@ -67,3 +73,23 @@ def gen_field(field, root):
     SubElement(root, "description").text = field.description
     SubElement(root, "bitOffset").text = hex(field.offset)
     SubElement(root, "bitWidth").text = hex(field.width)
+
+
+def gen_field_values(field, root, derivable):
+    # If we already generated the same field values, derive them instead
+    # of duplicating.
+    duplicates = [f.name for f in derivable if f.values == field.values]
+    if duplicates:
+        root.attrib["derivedFrom"] = duplicates[0]
+        return
+
+    SubElement(root, "name").text = field.name
+    SubElement(root, "usage").text = field.values.usage.value
+
+    for bits, (name, description) in field.values.values.items():
+        value_elem = SubElement(root, "enumeratedValue")
+        SubElement(value_elem, "name").text = name
+        SubElement(value_elem, "description").text = description
+        SubElement(value_elem, "value").text = str(bits)
+
+    derivable.append(field)

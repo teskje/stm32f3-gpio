@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from peripheral import Access, Field, Peripheral, Register
+from peripheral import Access, Field, Peripheral, Register, Usage, Values
 
 
 def gpio_prototypes():
@@ -28,7 +28,7 @@ def gpio_prototypes():
     return peripherals
 
 
-def gpio_fields(name, description, width=1):
+def gpio_fields(name, description, values, width=1):
     fields = {}
     for i in range(16):
         field_name = f"{name}{i}"
@@ -38,6 +38,7 @@ def gpio_fields(name, description, width=1):
             description=f"Pin {i} {description}",
             offset=i * width,
             width=width,
+            values=values,
         )
     return fields
 
@@ -49,11 +50,25 @@ def bsrr_fields():
             name=f"BS{i}",
             description=f"Pin {i} set bit",
             offset=i,
+            values=Values(
+                usage=Usage.write,
+                values={
+                    0b0: ("NoAction", "No action on the OD bit"),
+                    0b1: ("Set", "Set the OD bit"),
+                },
+            ),
         )
         fields[f"br{i}"] = Field(
             name=f"BR{i}",
             description=f"Pin {i} reset bit",
             offset=i + 16,
+            values=Values(
+                usage=Usage.write,
+                values={
+                    0b0: ("NoAction", "No action on the OD bit"),
+                    0b1: ("Reset", "Reset the OD bit"),
+                },
+            ),
         )
     return fields
 
@@ -66,6 +81,26 @@ def afr_fields(start):
             description=f"Pin {i} alternate function selection bits",
             offset=i * 4,
             width=4,
+            values=Values(
+                values={
+                    0b0000: ("AF0", "Alternate function 0"),
+                    0b0001: ("AF1", "Alternate function 1"),
+                    0b0010: ("AF2", "Alternate function 2"),
+                    0b0011: ("AF3", "Alternate function 3"),
+                    0b0100: ("AF4", "Alternate function 4"),
+                    0b0101: ("AF5", "Alternate function 5"),
+                    0b0110: ("AF6", "Alternate function 6"),
+                    0b0111: ("AF7", "Alternate function 7"),
+                    0b1000: ("AF8", "Alternate function 8"),
+                    0b1001: ("AF9", "Alternate function 9"),
+                    0b1010: ("AF10", "Alternate function 10"),
+                    0b1011: ("AF11", "Alternate function 11"),
+                    0b1100: ("AF12", "Alternate function 12"),
+                    0b1101: ("AF13", "Alternate function 13"),
+                    0b1110: ("AF14", "Alternate function 14"),
+                    0b1111: ("AF15", "Alternate function 15"),
+                },
+            ),
         )
     return fields
 
@@ -78,6 +113,14 @@ REGISTERS = {
         fields=gpio_fields(
             name="MODER",
             description="I/O mode configuration bits",
+            values=Values(
+                values={
+                    0b00: ("Input", "Input mode"),
+                    0b01: ("Output", "General-purpose output mode"),
+                    0b10: ("Alternate", "Alternate function mode"),
+                    0b11: ("Analog", "Analog mode"),
+                },
+            ),
             width=2,
         ),
     ),
@@ -88,6 +131,12 @@ REGISTERS = {
         fields=gpio_fields(
             name="OT",
             description="I/O output type configuration bit",
+            values=Values(
+                values={
+                    0b0: ("PushPull", "Output push-pull"),
+                    0b1: ("OpenDrain", "Output open-drain"),
+                },
+            ),
         ),
     ),
     "ospeedr": Register(
@@ -97,6 +146,13 @@ REGISTERS = {
         fields=gpio_fields(
             name="OSPEEDR",
             description="I/O output speed configuration bits",
+            values=Values(
+                values={
+                    0b00: ("LowSpeed", "Low speed"),
+                    0b01: ("MediumSpeed", "Medium speed"),
+                    0b11: ("HighSpeed", "High speed"),
+                },
+            ),
             width=2,
         ),
     ),
@@ -107,6 +163,13 @@ REGISTERS = {
         fields=gpio_fields(
             name="PUPDR",
             description="I/O pull-up or pull-down configuration bits",
+            values=Values(
+                values={
+                    0b00: ("Floating", "No pull-up, pull-down"),
+                    0b01: ("PullUp", "Pull-up"),
+                    0b10: ("PullDown", "Pull-down"),
+                },
+            ),
             width=2,
         ),
     ),
@@ -118,6 +181,13 @@ REGISTERS = {
         fields=gpio_fields(
             name="IDR",
             description="input data bit",
+            values=Values(
+                usage=Usage.read,
+                values={
+                    0b0: ("Low", "Input is logic low"),
+                    0b1: ("High", "Input is logic high"),
+                },
+            ),
         ),
     ),
     "odr": Register(
@@ -127,6 +197,12 @@ REGISTERS = {
         fields=gpio_fields(
             name="ODR",
             description="output data bit",
+            values=Values(
+                values={
+                    0b0: ("Low", "Set output to logic low"),
+                    0b1: ("High", "Set output to logic high"),
+                },
+            ),
         ),
     ),
     "bsrr": Register(
@@ -141,8 +217,27 @@ REGISTERS = {
         description="GPIO port configuration lock register",
         address_offset=0x1C,
         fields={
-            **gpio_fields(name="LCK", description="lock bit"),
-            "lckk": Field(name="LCKK", description="Lock key", offset=16),
+            **gpio_fields(
+                name="LCK",
+                description="lock bit",
+                values=Values(
+                    values={
+                        0b0: ("Unlocked", "Port configuration is not locked"),
+                        0b1: ("Locked", "Port configuration is locked"),
+                    },
+                ),
+            ),
+            "lckk": Field(
+                name="LCKK",
+                description="Lock key",
+                offset=16,
+                values=Values(
+                    values={
+                        0b0: ("NotActive", "Port configuration lock is not active"),
+                        0b1: ("Active", "Port configuration lock is active"),
+                    },
+                ),
+            ),
         },
     ),
     "afrl": Register(
@@ -165,6 +260,13 @@ REGISTERS = {
         fields=gpio_fields(
             name="BR",
             description="reset bit",
+            values=Values(
+                usage=Usage.write,
+                values={
+                    0b0: ("NoAction", "No action on the OD bit"),
+                    0b1: ("Reset", "Reset the OD bit"),
+                },
+            ),
         )
     ),
 }
