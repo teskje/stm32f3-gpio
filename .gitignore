@@ -1,0 +1,9 @@
+/target/
+Cargo.lock
+
+/svd/
+
+.venv/
+.vscode/
+
+__pycache__/
