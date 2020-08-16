@@ -85,11 +85,8 @@ def rustfmt():
 
 
 def main():
-    generate("f302", versions.f302.make())
-    generate("f303", versions.f303.make())
-    generate("f303e", versions.f303e.make())
-    generate("f333", versions.f333.make())
-    generate("f373", versions.f373.make())
+    for version, peripherals in versions.make_definitions():
+        generate(version, peripherals)
 
     rustfmt()
 
