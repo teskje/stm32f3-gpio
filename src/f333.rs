@@ -50159,7 +50159,6 @@ pub mod gpiof {
         }
     }
 }
-#[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r"All the peripherals"]
 #[allow(non_snake_case)]

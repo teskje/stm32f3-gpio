@@ -49,8 +49,10 @@ def generate_rust(name, svd_file):
 
 def clean_and_copy_module(src, dst):
     """
-    Copy the Rust file src to dst. Remove all module-level attributes
-    that are not `allow`s in the process.
+    Copy the Rust file src to dst and:
+
+    - Remove all non-`allow` module attributes.
+    - Remove `no_mangle` attributes to avoid linking conflicts with other PACs.
     """
 
     attr = re.compile(r"^# ! \[ (?P<attr>\w+) .*\]\n$")
@@ -66,7 +68,9 @@ def clean_and_copy_module(src, dst):
             if not m:
                 break
 
-        fdst.write(fsrc.read())
+        for line in fsrc:
+            line = line.replace("# [ no_mangle ]", "")
+            fdst.write(line)
 
 
 @contextmanager
