@@ -39,7 +39,7 @@ pub mod gpioa {
         #[doc = "0x10 - GPIO port input data register"]
         pub idr: IDR,
         #[doc = "0x14 - GPIO port output data register"]
-        pub udr: UDR,
+        pub odr: ODR,
         #[doc = "0x18 - GPIO port bit set/reset register"]
         pub bsrr: BSRR,
         #[doc = "0x1c - GPIO port configuration lock register"]
@@ -3689,23 +3689,23 @@ pub mod gpioa {
             }
         }
     }
-    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [udr](udr) module"]
-    pub type UDR = crate::Reg<u32, _UDR>;
+    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [odr](odr) module"]
+    pub type ODR = crate::Reg<u32, _ODR>;
     #[allow(missing_docs)]
     #[doc(hidden)]
-    pub struct _UDR;
-    #[doc = "`read()` method returns [udr::R](udr::R) reader structure"]
-    impl crate::Readable for UDR {}
-    #[doc = "`write(|w| ..)` method takes [udr::W](udr::W) writer structure"]
-    impl crate::Writable for UDR {}
+    pub struct _ODR;
+    #[doc = "`read()` method returns [odr::R](odr::R) reader structure"]
+    impl crate::Readable for ODR {}
+    #[doc = "`write(|w| ..)` method takes [odr::W](odr::W) writer structure"]
+    impl crate::Writable for ODR {}
     #[doc = "GPIO port output data register"]
-    pub mod udr {
-        #[doc = "Reader of register UDR"]
-        pub type R = crate::R<u32, super::UDR>;
-        #[doc = "Writer for register UDR"]
-        pub type W = crate::W<u32, super::UDR>;
-        #[doc = "Register UDR `reset()`'s with value 0"]
-        impl crate::ResetValue for super::UDR {
+    pub mod odr {
+        #[doc = "Reader of register ODR"]
+        pub type R = crate::R<u32, super::ODR>;
+        #[doc = "Writer for register ODR"]
+        pub type W = crate::W<u32, super::ODR>;
+        #[doc = "Register ODR `reset()`'s with value 0"]
+        impl crate::ResetValue for super::ODR {
             type Type = u32;
             #[inline(always)]
             fn reset_value() -> Self::Type {
@@ -8454,7 +8454,7 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 32)) | (((value as u32) & 0x0f) << 32);
+                self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
                 self.w
             }
         }
@@ -8557,7 +8557,7 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 36)) | (((value as u32) & 0x0f) << 36);
+                self.w.bits = (self.w.bits & !(0x0f << 4)) | (((value as u32) & 0x0f) << 4);
                 self.w
             }
         }
@@ -8660,7 +8660,7 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 40)) | (((value as u32) & 0x0f) << 40);
+                self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
                 self.w
             }
         }
@@ -8763,7 +8763,7 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 44)) | (((value as u32) & 0x0f) << 44);
+                self.w.bits = (self.w.bits & !(0x0f << 12)) | (((value as u32) & 0x0f) << 12);
                 self.w
             }
         }
@@ -8866,7 +8866,7 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 48)) | (((value as u32) & 0x0f) << 48);
+                self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
                 self.w
             }
         }
@@ -8969,7 +8969,7 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 52)) | (((value as u32) & 0x0f) << 52);
+                self.w.bits = (self.w.bits & !(0x0f << 20)) | (((value as u32) & 0x0f) << 20);
                 self.w
             }
         }
@@ -9072,7 +9072,7 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 56)) | (((value as u32) & 0x0f) << 56);
+                self.w.bits = (self.w.bits & !(0x0f << 24)) | (((value as u32) & 0x0f) << 24);
                 self.w
             }
         }
@@ -9175,89 +9175,89 @@ pub mod gpioa {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 60)) | (((value as u32) & 0x0f) << 60);
+                self.w.bits = (self.w.bits & !(0x0f << 28)) | (((value as u32) & 0x0f) << 28);
                 self.w
             }
         }
         impl R {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&self) -> AFR8_R {
-                AFR8_R::new(((self.bits >> 32) & 0x0f) as u8)
+                AFR8_R::new((self.bits & 0x0f) as u8)
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&self) -> AFR9_R {
-                AFR9_R::new(((self.bits >> 36) & 0x0f) as u8)
+                AFR9_R::new(((self.bits >> 4) & 0x0f) as u8)
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&self) -> AFR10_R {
-                AFR10_R::new(((self.bits >> 40) & 0x0f) as u8)
+                AFR10_R::new(((self.bits >> 8) & 0x0f) as u8)
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&self) -> AFR11_R {
-                AFR11_R::new(((self.bits >> 44) & 0x0f) as u8)
+                AFR11_R::new(((self.bits >> 12) & 0x0f) as u8)
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&self) -> AFR12_R {
-                AFR12_R::new(((self.bits >> 48) & 0x0f) as u8)
+                AFR12_R::new(((self.bits >> 16) & 0x0f) as u8)
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&self) -> AFR13_R {
-                AFR13_R::new(((self.bits >> 52) & 0x0f) as u8)
+                AFR13_R::new(((self.bits >> 20) & 0x0f) as u8)
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&self) -> AFR14_R {
-                AFR14_R::new(((self.bits >> 56) & 0x0f) as u8)
+                AFR14_R::new(((self.bits >> 24) & 0x0f) as u8)
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&self) -> AFR15_R {
-                AFR15_R::new(((self.bits >> 60) & 0x0f) as u8)
+                AFR15_R::new(((self.bits >> 28) & 0x0f) as u8)
             }
         }
         impl W {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&mut self) -> AFR8_W {
                 AFR8_W { w: self }
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&mut self) -> AFR9_W {
                 AFR9_W { w: self }
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&mut self) -> AFR10_W {
                 AFR10_W { w: self }
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&mut self) -> AFR11_W {
                 AFR11_W { w: self }
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&mut self) -> AFR12_W {
                 AFR12_W { w: self }
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&mut self) -> AFR13_W {
                 AFR13_W { w: self }
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&mut self) -> AFR14_W {
                 AFR14_W { w: self }
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&mut self) -> AFR15_W {
                 AFR15_W { w: self }
@@ -10070,7 +10070,7 @@ pub mod gpiob {
         #[doc = "0x10 - GPIO port input data register"]
         pub idr: IDR,
         #[doc = "0x14 - GPIO port output data register"]
-        pub udr: UDR,
+        pub odr: ODR,
         #[doc = "0x18 - GPIO port bit set/reset register"]
         pub bsrr: BSRR,
         #[doc = "0x1c - GPIO port configuration lock register"]
@@ -13720,23 +13720,23 @@ pub mod gpiob {
             }
         }
     }
-    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [udr](udr) module"]
-    pub type UDR = crate::Reg<u32, _UDR>;
+    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [odr](odr) module"]
+    pub type ODR = crate::Reg<u32, _ODR>;
     #[allow(missing_docs)]
     #[doc(hidden)]
-    pub struct _UDR;
-    #[doc = "`read()` method returns [udr::R](udr::R) reader structure"]
-    impl crate::Readable for UDR {}
-    #[doc = "`write(|w| ..)` method takes [udr::W](udr::W) writer structure"]
-    impl crate::Writable for UDR {}
+    pub struct _ODR;
+    #[doc = "`read()` method returns [odr::R](odr::R) reader structure"]
+    impl crate::Readable for ODR {}
+    #[doc = "`write(|w| ..)` method takes [odr::W](odr::W) writer structure"]
+    impl crate::Writable for ODR {}
     #[doc = "GPIO port output data register"]
-    pub mod udr {
-        #[doc = "Reader of register UDR"]
-        pub type R = crate::R<u32, super::UDR>;
-        #[doc = "Writer for register UDR"]
-        pub type W = crate::W<u32, super::UDR>;
-        #[doc = "Register UDR `reset()`'s with value 0"]
-        impl crate::ResetValue for super::UDR {
+    pub mod odr {
+        #[doc = "Reader of register ODR"]
+        pub type R = crate::R<u32, super::ODR>;
+        #[doc = "Writer for register ODR"]
+        pub type W = crate::W<u32, super::ODR>;
+        #[doc = "Register ODR `reset()`'s with value 0"]
+        impl crate::ResetValue for super::ODR {
             type Type = u32;
             #[inline(always)]
             fn reset_value() -> Self::Type {
@@ -18485,7 +18485,7 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 32)) | (((value as u32) & 0x0f) << 32);
+                self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
                 self.w
             }
         }
@@ -18588,7 +18588,7 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 36)) | (((value as u32) & 0x0f) << 36);
+                self.w.bits = (self.w.bits & !(0x0f << 4)) | (((value as u32) & 0x0f) << 4);
                 self.w
             }
         }
@@ -18691,7 +18691,7 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 40)) | (((value as u32) & 0x0f) << 40);
+                self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
                 self.w
             }
         }
@@ -18794,7 +18794,7 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 44)) | (((value as u32) & 0x0f) << 44);
+                self.w.bits = (self.w.bits & !(0x0f << 12)) | (((value as u32) & 0x0f) << 12);
                 self.w
             }
         }
@@ -18897,7 +18897,7 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 48)) | (((value as u32) & 0x0f) << 48);
+                self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
                 self.w
             }
         }
@@ -19000,7 +19000,7 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 52)) | (((value as u32) & 0x0f) << 52);
+                self.w.bits = (self.w.bits & !(0x0f << 20)) | (((value as u32) & 0x0f) << 20);
                 self.w
             }
         }
@@ -19103,7 +19103,7 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 56)) | (((value as u32) & 0x0f) << 56);
+                self.w.bits = (self.w.bits & !(0x0f << 24)) | (((value as u32) & 0x0f) << 24);
                 self.w
             }
         }
@@ -19206,89 +19206,89 @@ pub mod gpiob {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 60)) | (((value as u32) & 0x0f) << 60);
+                self.w.bits = (self.w.bits & !(0x0f << 28)) | (((value as u32) & 0x0f) << 28);
                 self.w
             }
         }
         impl R {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&self) -> AFR8_R {
-                AFR8_R::new(((self.bits >> 32) & 0x0f) as u8)
+                AFR8_R::new((self.bits & 0x0f) as u8)
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&self) -> AFR9_R {
-                AFR9_R::new(((self.bits >> 36) & 0x0f) as u8)
+                AFR9_R::new(((self.bits >> 4) & 0x0f) as u8)
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&self) -> AFR10_R {
-                AFR10_R::new(((self.bits >> 40) & 0x0f) as u8)
+                AFR10_R::new(((self.bits >> 8) & 0x0f) as u8)
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&self) -> AFR11_R {
-                AFR11_R::new(((self.bits >> 44) & 0x0f) as u8)
+                AFR11_R::new(((self.bits >> 12) & 0x0f) as u8)
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&self) -> AFR12_R {
-                AFR12_R::new(((self.bits >> 48) & 0x0f) as u8)
+                AFR12_R::new(((self.bits >> 16) & 0x0f) as u8)
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&self) -> AFR13_R {
-                AFR13_R::new(((self.bits >> 52) & 0x0f) as u8)
+                AFR13_R::new(((self.bits >> 20) & 0x0f) as u8)
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&self) -> AFR14_R {
-                AFR14_R::new(((self.bits >> 56) & 0x0f) as u8)
+                AFR14_R::new(((self.bits >> 24) & 0x0f) as u8)
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&self) -> AFR15_R {
-                AFR15_R::new(((self.bits >> 60) & 0x0f) as u8)
+                AFR15_R::new(((self.bits >> 28) & 0x0f) as u8)
             }
         }
         impl W {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&mut self) -> AFR8_W {
                 AFR8_W { w: self }
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&mut self) -> AFR9_W {
                 AFR9_W { w: self }
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&mut self) -> AFR10_W {
                 AFR10_W { w: self }
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&mut self) -> AFR11_W {
                 AFR11_W { w: self }
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&mut self) -> AFR12_W {
                 AFR12_W { w: self }
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&mut self) -> AFR13_W {
                 AFR13_W { w: self }
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&mut self) -> AFR14_W {
                 AFR14_W { w: self }
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&mut self) -> AFR15_W {
                 AFR15_W { w: self }
@@ -20101,7 +20101,7 @@ pub mod gpioc {
         #[doc = "0x10 - GPIO port input data register"]
         pub idr: IDR,
         #[doc = "0x14 - GPIO port output data register"]
-        pub udr: UDR,
+        pub odr: ODR,
         #[doc = "0x18 - GPIO port bit set/reset register"]
         pub bsrr: BSRR,
         _reserved7: [u8; 4usize],
@@ -23750,23 +23750,23 @@ pub mod gpioc {
             }
         }
     }
-    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [udr](udr) module"]
-    pub type UDR = crate::Reg<u32, _UDR>;
+    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [odr](odr) module"]
+    pub type ODR = crate::Reg<u32, _ODR>;
     #[allow(missing_docs)]
     #[doc(hidden)]
-    pub struct _UDR;
-    #[doc = "`read()` method returns [udr::R](udr::R) reader structure"]
-    impl crate::Readable for UDR {}
-    #[doc = "`write(|w| ..)` method takes [udr::W](udr::W) writer structure"]
-    impl crate::Writable for UDR {}
+    pub struct _ODR;
+    #[doc = "`read()` method returns [odr::R](odr::R) reader structure"]
+    impl crate::Readable for ODR {}
+    #[doc = "`write(|w| ..)` method takes [odr::W](odr::W) writer structure"]
+    impl crate::Writable for ODR {}
     #[doc = "GPIO port output data register"]
-    pub mod udr {
-        #[doc = "Reader of register UDR"]
-        pub type R = crate::R<u32, super::UDR>;
-        #[doc = "Writer for register UDR"]
-        pub type W = crate::W<u32, super::UDR>;
-        #[doc = "Register UDR `reset()`'s with value 0"]
-        impl crate::ResetValue for super::UDR {
+    pub mod odr {
+        #[doc = "Reader of register ODR"]
+        pub type R = crate::R<u32, super::ODR>;
+        #[doc = "Writer for register ODR"]
+        pub type W = crate::W<u32, super::ODR>;
+        #[doc = "Register ODR `reset()`'s with value 0"]
+        impl crate::ResetValue for super::ODR {
             type Type = u32;
             #[inline(always)]
             fn reset_value() -> Self::Type {
@@ -27522,7 +27522,7 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 32)) | (((value as u32) & 0x0f) << 32);
+                self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
                 self.w
             }
         }
@@ -27625,7 +27625,7 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 36)) | (((value as u32) & 0x0f) << 36);
+                self.w.bits = (self.w.bits & !(0x0f << 4)) | (((value as u32) & 0x0f) << 4);
                 self.w
             }
         }
@@ -27728,7 +27728,7 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 40)) | (((value as u32) & 0x0f) << 40);
+                self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
                 self.w
             }
         }
@@ -27831,7 +27831,7 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 44)) | (((value as u32) & 0x0f) << 44);
+                self.w.bits = (self.w.bits & !(0x0f << 12)) | (((value as u32) & 0x0f) << 12);
                 self.w
             }
         }
@@ -27934,7 +27934,7 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 48)) | (((value as u32) & 0x0f) << 48);
+                self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
                 self.w
             }
         }
@@ -28037,7 +28037,7 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 52)) | (((value as u32) & 0x0f) << 52);
+                self.w.bits = (self.w.bits & !(0x0f << 20)) | (((value as u32) & 0x0f) << 20);
                 self.w
             }
         }
@@ -28140,7 +28140,7 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 56)) | (((value as u32) & 0x0f) << 56);
+                self.w.bits = (self.w.bits & !(0x0f << 24)) | (((value as u32) & 0x0f) << 24);
                 self.w
             }
         }
@@ -28243,89 +28243,89 @@ pub mod gpioc {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 60)) | (((value as u32) & 0x0f) << 60);
+                self.w.bits = (self.w.bits & !(0x0f << 28)) | (((value as u32) & 0x0f) << 28);
                 self.w
             }
         }
         impl R {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&self) -> AFR8_R {
-                AFR8_R::new(((self.bits >> 32) & 0x0f) as u8)
+                AFR8_R::new((self.bits & 0x0f) as u8)
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&self) -> AFR9_R {
-                AFR9_R::new(((self.bits >> 36) & 0x0f) as u8)
+                AFR9_R::new(((self.bits >> 4) & 0x0f) as u8)
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&self) -> AFR10_R {
-                AFR10_R::new(((self.bits >> 40) & 0x0f) as u8)
+                AFR10_R::new(((self.bits >> 8) & 0x0f) as u8)
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&self) -> AFR11_R {
-                AFR11_R::new(((self.bits >> 44) & 0x0f) as u8)
+                AFR11_R::new(((self.bits >> 12) & 0x0f) as u8)
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&self) -> AFR12_R {
-                AFR12_R::new(((self.bits >> 48) & 0x0f) as u8)
+                AFR12_R::new(((self.bits >> 16) & 0x0f) as u8)
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&self) -> AFR13_R {
-                AFR13_R::new(((self.bits >> 52) & 0x0f) as u8)
+                AFR13_R::new(((self.bits >> 20) & 0x0f) as u8)
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&self) -> AFR14_R {
-                AFR14_R::new(((self.bits >> 56) & 0x0f) as u8)
+                AFR14_R::new(((self.bits >> 24) & 0x0f) as u8)
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&self) -> AFR15_R {
-                AFR15_R::new(((self.bits >> 60) & 0x0f) as u8)
+                AFR15_R::new(((self.bits >> 28) & 0x0f) as u8)
             }
         }
         impl W {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&mut self) -> AFR8_W {
                 AFR8_W { w: self }
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&mut self) -> AFR9_W {
                 AFR9_W { w: self }
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&mut self) -> AFR10_W {
                 AFR10_W { w: self }
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&mut self) -> AFR11_W {
                 AFR11_W { w: self }
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&mut self) -> AFR12_W {
                 AFR12_W { w: self }
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&mut self) -> AFR13_W {
                 AFR13_W { w: self }
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&mut self) -> AFR14_W {
                 AFR14_W { w: self }
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&mut self) -> AFR15_W {
                 AFR15_W { w: self }
@@ -29138,7 +29138,7 @@ pub mod gpiod {
         #[doc = "0x10 - GPIO port input data register"]
         pub idr: IDR,
         #[doc = "0x14 - GPIO port output data register"]
-        pub udr: UDR,
+        pub odr: ODR,
         #[doc = "0x18 - GPIO port bit set/reset register"]
         pub bsrr: BSRR,
         #[doc = "0x1c - GPIO port configuration lock register"]
@@ -32788,23 +32788,23 @@ pub mod gpiod {
             }
         }
     }
-    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [udr](udr) module"]
-    pub type UDR = crate::Reg<u32, _UDR>;
+    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [odr](odr) module"]
+    pub type ODR = crate::Reg<u32, _ODR>;
     #[allow(missing_docs)]
     #[doc(hidden)]
-    pub struct _UDR;
-    #[doc = "`read()` method returns [udr::R](udr::R) reader structure"]
-    impl crate::Readable for UDR {}
-    #[doc = "`write(|w| ..)` method takes [udr::W](udr::W) writer structure"]
-    impl crate::Writable for UDR {}
+    pub struct _ODR;
+    #[doc = "`read()` method returns [odr::R](odr::R) reader structure"]
+    impl crate::Readable for ODR {}
+    #[doc = "`write(|w| ..)` method takes [odr::W](odr::W) writer structure"]
+    impl crate::Writable for ODR {}
     #[doc = "GPIO port output data register"]
-    pub mod udr {
-        #[doc = "Reader of register UDR"]
-        pub type R = crate::R<u32, super::UDR>;
-        #[doc = "Writer for register UDR"]
-        pub type W = crate::W<u32, super::UDR>;
-        #[doc = "Register UDR `reset()`'s with value 0"]
-        impl crate::ResetValue for super::UDR {
+    pub mod odr {
+        #[doc = "Reader of register ODR"]
+        pub type R = crate::R<u32, super::ODR>;
+        #[doc = "Writer for register ODR"]
+        pub type W = crate::W<u32, super::ODR>;
+        #[doc = "Register ODR `reset()`'s with value 0"]
+        impl crate::ResetValue for super::ODR {
             type Type = u32;
             #[inline(always)]
             fn reset_value() -> Self::Type {
@@ -37553,7 +37553,7 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 32)) | (((value as u32) & 0x0f) << 32);
+                self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
                 self.w
             }
         }
@@ -37656,7 +37656,7 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 36)) | (((value as u32) & 0x0f) << 36);
+                self.w.bits = (self.w.bits & !(0x0f << 4)) | (((value as u32) & 0x0f) << 4);
                 self.w
             }
         }
@@ -37759,7 +37759,7 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 40)) | (((value as u32) & 0x0f) << 40);
+                self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
                 self.w
             }
         }
@@ -37862,7 +37862,7 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 44)) | (((value as u32) & 0x0f) << 44);
+                self.w.bits = (self.w.bits & !(0x0f << 12)) | (((value as u32) & 0x0f) << 12);
                 self.w
             }
         }
@@ -37965,7 +37965,7 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 48)) | (((value as u32) & 0x0f) << 48);
+                self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
                 self.w
             }
         }
@@ -38068,7 +38068,7 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 52)) | (((value as u32) & 0x0f) << 52);
+                self.w.bits = (self.w.bits & !(0x0f << 20)) | (((value as u32) & 0x0f) << 20);
                 self.w
             }
         }
@@ -38171,7 +38171,7 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 56)) | (((value as u32) & 0x0f) << 56);
+                self.w.bits = (self.w.bits & !(0x0f << 24)) | (((value as u32) & 0x0f) << 24);
                 self.w
             }
         }
@@ -38274,89 +38274,89 @@ pub mod gpiod {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 60)) | (((value as u32) & 0x0f) << 60);
+                self.w.bits = (self.w.bits & !(0x0f << 28)) | (((value as u32) & 0x0f) << 28);
                 self.w
             }
         }
         impl R {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&self) -> AFR8_R {
-                AFR8_R::new(((self.bits >> 32) & 0x0f) as u8)
+                AFR8_R::new((self.bits & 0x0f) as u8)
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&self) -> AFR9_R {
-                AFR9_R::new(((self.bits >> 36) & 0x0f) as u8)
+                AFR9_R::new(((self.bits >> 4) & 0x0f) as u8)
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&self) -> AFR10_R {
-                AFR10_R::new(((self.bits >> 40) & 0x0f) as u8)
+                AFR10_R::new(((self.bits >> 8) & 0x0f) as u8)
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&self) -> AFR11_R {
-                AFR11_R::new(((self.bits >> 44) & 0x0f) as u8)
+                AFR11_R::new(((self.bits >> 12) & 0x0f) as u8)
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&self) -> AFR12_R {
-                AFR12_R::new(((self.bits >> 48) & 0x0f) as u8)
+                AFR12_R::new(((self.bits >> 16) & 0x0f) as u8)
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&self) -> AFR13_R {
-                AFR13_R::new(((self.bits >> 52) & 0x0f) as u8)
+                AFR13_R::new(((self.bits >> 20) & 0x0f) as u8)
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&self) -> AFR14_R {
-                AFR14_R::new(((self.bits >> 56) & 0x0f) as u8)
+                AFR14_R::new(((self.bits >> 24) & 0x0f) as u8)
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&self) -> AFR15_R {
-                AFR15_R::new(((self.bits >> 60) & 0x0f) as u8)
+                AFR15_R::new(((self.bits >> 28) & 0x0f) as u8)
             }
         }
         impl W {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&mut self) -> AFR8_W {
                 AFR8_W { w: self }
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&mut self) -> AFR9_W {
                 AFR9_W { w: self }
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&mut self) -> AFR10_W {
                 AFR10_W { w: self }
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&mut self) -> AFR11_W {
                 AFR11_W { w: self }
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&mut self) -> AFR12_W {
                 AFR12_W { w: self }
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&mut self) -> AFR13_W {
                 AFR13_W { w: self }
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&mut self) -> AFR14_W {
                 AFR14_W { w: self }
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&mut self) -> AFR15_W {
                 AFR15_W { w: self }
@@ -39169,7 +39169,7 @@ pub mod gpioe {
         #[doc = "0x10 - GPIO port input data register"]
         pub idr: IDR,
         #[doc = "0x14 - GPIO port output data register"]
-        pub udr: UDR,
+        pub odr: ODR,
         #[doc = "0x18 - GPIO port bit set/reset register"]
         pub bsrr: BSRR,
         _reserved7: [u8; 4usize],
@@ -42818,23 +42818,23 @@ pub mod gpioe {
             }
         }
     }
-    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [udr](udr) module"]
-    pub type UDR = crate::Reg<u32, _UDR>;
+    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [odr](odr) module"]
+    pub type ODR = crate::Reg<u32, _ODR>;
     #[allow(missing_docs)]
     #[doc(hidden)]
-    pub struct _UDR;
-    #[doc = "`read()` method returns [udr::R](udr::R) reader structure"]
-    impl crate::Readable for UDR {}
-    #[doc = "`write(|w| ..)` method takes [udr::W](udr::W) writer structure"]
-    impl crate::Writable for UDR {}
+    pub struct _ODR;
+    #[doc = "`read()` method returns [odr::R](odr::R) reader structure"]
+    impl crate::Readable for ODR {}
+    #[doc = "`write(|w| ..)` method takes [odr::W](odr::W) writer structure"]
+    impl crate::Writable for ODR {}
     #[doc = "GPIO port output data register"]
-    pub mod udr {
-        #[doc = "Reader of register UDR"]
-        pub type R = crate::R<u32, super::UDR>;
-        #[doc = "Writer for register UDR"]
-        pub type W = crate::W<u32, super::UDR>;
-        #[doc = "Register UDR `reset()`'s with value 0"]
-        impl crate::ResetValue for super::UDR {
+    pub mod odr {
+        #[doc = "Reader of register ODR"]
+        pub type R = crate::R<u32, super::ODR>;
+        #[doc = "Writer for register ODR"]
+        pub type W = crate::W<u32, super::ODR>;
+        #[doc = "Register ODR `reset()`'s with value 0"]
+        impl crate::ResetValue for super::ODR {
             type Type = u32;
             #[inline(always)]
             fn reset_value() -> Self::Type {
@@ -46590,7 +46590,7 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 32)) | (((value as u32) & 0x0f) << 32);
+                self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
                 self.w
             }
         }
@@ -46693,7 +46693,7 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 36)) | (((value as u32) & 0x0f) << 36);
+                self.w.bits = (self.w.bits & !(0x0f << 4)) | (((value as u32) & 0x0f) << 4);
                 self.w
             }
         }
@@ -46796,7 +46796,7 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 40)) | (((value as u32) & 0x0f) << 40);
+                self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
                 self.w
             }
         }
@@ -46899,7 +46899,7 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 44)) | (((value as u32) & 0x0f) << 44);
+                self.w.bits = (self.w.bits & !(0x0f << 12)) | (((value as u32) & 0x0f) << 12);
                 self.w
             }
         }
@@ -47002,7 +47002,7 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 48)) | (((value as u32) & 0x0f) << 48);
+                self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
                 self.w
             }
         }
@@ -47105,7 +47105,7 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 52)) | (((value as u32) & 0x0f) << 52);
+                self.w.bits = (self.w.bits & !(0x0f << 20)) | (((value as u32) & 0x0f) << 20);
                 self.w
             }
         }
@@ -47208,7 +47208,7 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 56)) | (((value as u32) & 0x0f) << 56);
+                self.w.bits = (self.w.bits & !(0x0f << 24)) | (((value as u32) & 0x0f) << 24);
                 self.w
             }
         }
@@ -47311,89 +47311,89 @@ pub mod gpioe {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 60)) | (((value as u32) & 0x0f) << 60);
+                self.w.bits = (self.w.bits & !(0x0f << 28)) | (((value as u32) & 0x0f) << 28);
                 self.w
             }
         }
         impl R {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&self) -> AFR8_R {
-                AFR8_R::new(((self.bits >> 32) & 0x0f) as u8)
+                AFR8_R::new((self.bits & 0x0f) as u8)
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&self) -> AFR9_R {
-                AFR9_R::new(((self.bits >> 36) & 0x0f) as u8)
+                AFR9_R::new(((self.bits >> 4) & 0x0f) as u8)
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&self) -> AFR10_R {
-                AFR10_R::new(((self.bits >> 40) & 0x0f) as u8)
+                AFR10_R::new(((self.bits >> 8) & 0x0f) as u8)
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&self) -> AFR11_R {
-                AFR11_R::new(((self.bits >> 44) & 0x0f) as u8)
+                AFR11_R::new(((self.bits >> 12) & 0x0f) as u8)
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&self) -> AFR12_R {
-                AFR12_R::new(((self.bits >> 48) & 0x0f) as u8)
+                AFR12_R::new(((self.bits >> 16) & 0x0f) as u8)
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&self) -> AFR13_R {
-                AFR13_R::new(((self.bits >> 52) & 0x0f) as u8)
+                AFR13_R::new(((self.bits >> 20) & 0x0f) as u8)
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&self) -> AFR14_R {
-                AFR14_R::new(((self.bits >> 56) & 0x0f) as u8)
+                AFR14_R::new(((self.bits >> 24) & 0x0f) as u8)
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&self) -> AFR15_R {
-                AFR15_R::new(((self.bits >> 60) & 0x0f) as u8)
+                AFR15_R::new(((self.bits >> 28) & 0x0f) as u8)
             }
         }
         impl W {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&mut self) -> AFR8_W {
                 AFR8_W { w: self }
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&mut self) -> AFR9_W {
                 AFR9_W { w: self }
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&mut self) -> AFR10_W {
                 AFR10_W { w: self }
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&mut self) -> AFR11_W {
                 AFR11_W { w: self }
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&mut self) -> AFR12_W {
                 AFR12_W { w: self }
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&mut self) -> AFR13_W {
                 AFR13_W { w: self }
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&mut self) -> AFR14_W {
                 AFR14_W { w: self }
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&mut self) -> AFR15_W {
                 AFR15_W { w: self }
@@ -48206,7 +48206,7 @@ pub mod gpiof {
         #[doc = "0x10 - GPIO port input data register"]
         pub idr: IDR,
         #[doc = "0x14 - GPIO port output data register"]
-        pub udr: UDR,
+        pub odr: ODR,
         #[doc = "0x18 - GPIO port bit set/reset register"]
         pub bsrr: BSRR,
         _reserved7: [u8; 4usize],
@@ -51802,23 +51802,23 @@ pub mod gpiof {
             }
         }
     }
-    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [udr](udr) module"]
-    pub type UDR = crate::Reg<u32, _UDR>;
+    #[doc = "GPIO port output data register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [odr](odr) module"]
+    pub type ODR = crate::Reg<u32, _ODR>;
     #[allow(missing_docs)]
     #[doc(hidden)]
-    pub struct _UDR;
-    #[doc = "`read()` method returns [udr::R](udr::R) reader structure"]
-    impl crate::Readable for UDR {}
-    #[doc = "`write(|w| ..)` method takes [udr::W](udr::W) writer structure"]
-    impl crate::Writable for UDR {}
+    pub struct _ODR;
+    #[doc = "`read()` method returns [odr::R](odr::R) reader structure"]
+    impl crate::Readable for ODR {}
+    #[doc = "`write(|w| ..)` method takes [odr::W](odr::W) writer structure"]
+    impl crate::Writable for ODR {}
     #[doc = "GPIO port output data register"]
-    pub mod udr {
-        #[doc = "Reader of register UDR"]
-        pub type R = crate::R<u32, super::UDR>;
-        #[doc = "Writer for register UDR"]
-        pub type W = crate::W<u32, super::UDR>;
-        #[doc = "Register UDR `reset()`'s with value 0"]
-        impl crate::ResetValue for super::UDR {
+    pub mod odr {
+        #[doc = "Reader of register ODR"]
+        pub type R = crate::R<u32, super::ODR>;
+        #[doc = "Writer for register ODR"]
+        pub type W = crate::W<u32, super::ODR>;
+        #[doc = "Register ODR `reset()`'s with value 0"]
+        impl crate::ResetValue for super::ODR {
             type Type = u32;
             #[inline(always)]
             fn reset_value() -> Self::Type {
@@ -55574,7 +55574,7 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 32)) | (((value as u32) & 0x0f) << 32);
+                self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
                 self.w
             }
         }
@@ -55677,7 +55677,7 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 36)) | (((value as u32) & 0x0f) << 36);
+                self.w.bits = (self.w.bits & !(0x0f << 4)) | (((value as u32) & 0x0f) << 4);
                 self.w
             }
         }
@@ -55780,7 +55780,7 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 40)) | (((value as u32) & 0x0f) << 40);
+                self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
                 self.w
             }
         }
@@ -55883,7 +55883,7 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 44)) | (((value as u32) & 0x0f) << 44);
+                self.w.bits = (self.w.bits & !(0x0f << 12)) | (((value as u32) & 0x0f) << 12);
                 self.w
             }
         }
@@ -55986,7 +55986,7 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 48)) | (((value as u32) & 0x0f) << 48);
+                self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
                 self.w
             }
         }
@@ -56089,7 +56089,7 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 52)) | (((value as u32) & 0x0f) << 52);
+                self.w.bits = (self.w.bits & !(0x0f << 20)) | (((value as u32) & 0x0f) << 20);
                 self.w
             }
         }
@@ -56192,7 +56192,7 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 56)) | (((value as u32) & 0x0f) << 56);
+                self.w.bits = (self.w.bits & !(0x0f << 24)) | (((value as u32) & 0x0f) << 24);
                 self.w
             }
         }
@@ -56295,89 +56295,89 @@ pub mod gpiof {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits = (self.w.bits & !(0x0f << 60)) | (((value as u32) & 0x0f) << 60);
+                self.w.bits = (self.w.bits & !(0x0f << 28)) | (((value as u32) & 0x0f) << 28);
                 self.w
             }
         }
         impl R {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&self) -> AFR8_R {
-                AFR8_R::new(((self.bits >> 32) & 0x0f) as u8)
+                AFR8_R::new((self.bits & 0x0f) as u8)
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&self) -> AFR9_R {
-                AFR9_R::new(((self.bits >> 36) & 0x0f) as u8)
+                AFR9_R::new(((self.bits >> 4) & 0x0f) as u8)
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&self) -> AFR10_R {
-                AFR10_R::new(((self.bits >> 40) & 0x0f) as u8)
+                AFR10_R::new(((self.bits >> 8) & 0x0f) as u8)
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&self) -> AFR11_R {
-                AFR11_R::new(((self.bits >> 44) & 0x0f) as u8)
+                AFR11_R::new(((self.bits >> 12) & 0x0f) as u8)
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&self) -> AFR12_R {
-                AFR12_R::new(((self.bits >> 48) & 0x0f) as u8)
+                AFR12_R::new(((self.bits >> 16) & 0x0f) as u8)
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&self) -> AFR13_R {
-                AFR13_R::new(((self.bits >> 52) & 0x0f) as u8)
+                AFR13_R::new(((self.bits >> 20) & 0x0f) as u8)
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&self) -> AFR14_R {
-                AFR14_R::new(((self.bits >> 56) & 0x0f) as u8)
+                AFR14_R::new(((self.bits >> 24) & 0x0f) as u8)
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&self) -> AFR15_R {
-                AFR15_R::new(((self.bits >> 60) & 0x0f) as u8)
+                AFR15_R::new(((self.bits >> 28) & 0x0f) as u8)
             }
         }
         impl W {
-            #[doc = "Bits 32:35 - Pin 8 alternate function selection bits"]
+            #[doc = "Bits 0:3 - Pin 8 alternate function selection bits"]
             #[inline(always)]
             pub fn afr8(&mut self) -> AFR8_W {
                 AFR8_W { w: self }
             }
-            #[doc = "Bits 36:39 - Pin 9 alternate function selection bits"]
+            #[doc = "Bits 4:7 - Pin 9 alternate function selection bits"]
             #[inline(always)]
             pub fn afr9(&mut self) -> AFR9_W {
                 AFR9_W { w: self }
             }
-            #[doc = "Bits 40:43 - Pin 10 alternate function selection bits"]
+            #[doc = "Bits 8:11 - Pin 10 alternate function selection bits"]
             #[inline(always)]
             pub fn afr10(&mut self) -> AFR10_W {
                 AFR10_W { w: self }
             }
-            #[doc = "Bits 44:47 - Pin 11 alternate function selection bits"]
+            #[doc = "Bits 12:15 - Pin 11 alternate function selection bits"]
             #[inline(always)]
             pub fn afr11(&mut self) -> AFR11_W {
                 AFR11_W { w: self }
             }
-            #[doc = "Bits 48:51 - Pin 12 alternate function selection bits"]
+            #[doc = "Bits 16:19 - Pin 12 alternate function selection bits"]
             #[inline(always)]
             pub fn afr12(&mut self) -> AFR12_W {
                 AFR12_W { w: self }
             }
-            #[doc = "Bits 52:55 - Pin 13 alternate function selection bits"]
+            #[doc = "Bits 20:23 - Pin 13 alternate function selection bits"]
             #[inline(always)]
             pub fn afr13(&mut self) -> AFR13_W {
                 AFR13_W { w: self }
             }
-            #[doc = "Bits 56:59 - Pin 14 alternate function selection bits"]
+            #[doc = "Bits 24:27 - Pin 14 alternate function selection bits"]
             #[inline(always)]
             pub fn afr14(&mut self) -> AFR14_W {
                 AFR14_W { w: self }
             }
-            #[doc = "Bits 60:63 - Pin 15 alternate function selection bits"]
+            #[doc = "Bits 28:31 - Pin 15 alternate function selection bits"]
             #[inline(always)]
             pub fn afr15(&mut self) -> AFR15_W {
                 AFR15_W { w: self }

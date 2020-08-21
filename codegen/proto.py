@@ -75,10 +75,11 @@ def bsrr_fields():
 
 def afr_fields(start):
     fields = {}
-    for i in range(start, start + 8):
-        fields[f"afr{i}"] = Field(
-            name=f"AFR{i}",
-            description=f"Pin {i} alternate function selection bits",
+    for i in range(8):
+        pin = i + start
+        fields[f"afr{pin}"] = Field(
+            name=f"AFR{pin}",
+            description=f"Pin {pin} alternate function selection bits",
             offset=i * 4,
             width=4,
             values=Values(
@@ -191,7 +192,7 @@ REGISTERS = {
         ),
     ),
     "odr": Register(
-        name="UDR",
+        name="ODR",
         description="GPIO port output data register",
         address_offset=0x14,
         fields=gpio_fields(
